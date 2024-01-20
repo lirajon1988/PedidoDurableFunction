@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "3b155ea3-c519-49b1-99e3-62a6950b4d75",
+		"name": "PedidoDurableFunction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32351950"
+	},
+	"item": [
+		{
+			"name": "Pedido Localhost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NumeroPedido\": 2,\r\n    \"NomeCliente\": \"Jonas Lira\",\r\n    \"Cpf\": \"33333333333\",\r\n    \"Itens\": [\r\n        {\r\n            \"IdItem\": 1,\r\n            \"Descricao\": \"Panela\",\r\n            \"Quantidade\": 10\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7071/api/PedidoDurableFunctionsOrchestration_HttpStart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"PedidoDurableFunctionsOrchestration_HttpStart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pedido Azure",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"name": "cache-control",
+						"sortOrder": 2,
+						"infoTitle": "We recommend using this header",
+						"info": "Postman added \"Cache-Control: no-cache\" as a precautionary measure to prevent the server from returning stale response when one makes repeated requests.\n\nYou can remove this header in the app settings or enter a new one with a different value.",
+						"allowedToToggle": false,
+						"disableEdit": true,
+						"previewSettingsLink": "Go to settings",
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"system": true,
+						"type": "text"
+					},
+					{
+						"name": "postman-token",
+						"sortOrder": 3,
+						"infoTitle": "We recommend using this header",
+						"info": "The Postman-Token header appends a random UUID to every outgoing request. Postman adds this header for API developers to better debug requests sent and to ensure separate requests appear distinct to the receiving server.\n\nYou can remove this header in the app settings.",
+						"allowedToToggle": false,
+						"disableEdit": true,
+						"previewSettingsLink": "Go to settings",
+						"key": "Postman-Token",
+						"value": "<calculated when request is sent>",
+						"system": true,
+						"type": "text"
+					},
+					{
+						"name": "content-type",
+						"sortOrder": 4,
+						"infoTitle": "This header was automatically added",
+						"info": "The Content-Type header is added to help the server identify the media type of the request body that is present in this request.\n\nUse the request body tab to control the value or to remove this header.",
+						"allowedToToggle": true,
+						"disableEdit": true,
+						"previewSettingsLink": "Go to body",
+						"key": "Content-Type",
+						"value": "application/json",
+						"system": true,
+						"type": "text"
+					},
+					{
+						"name": "content-length",
+						"sortOrder": 5,
+						"infoTitle": "This header was automatically added",
+						"info": "The Content-Length header was added to indicate to the server the size of the request body that is added to this request. Server uses this value to parse the request body accurately.\n\nYou can remove the header or enter a new one with a different value.",
+						"allowedToToggle": true,
+						"disableEdit": true,
+						"previewSettingsLink": "Go to body",
+						"key": "Content-Length",
+						"value": "<calculated when request is sent>",
+						"system": true,
+						"type": "text"
+					},
+					{
+						"name": "host",
+						"sortOrder": 6,
+						"infoTitle": "We recommend using this header",
+						"info": "The Host header is added to identify the domain name for which a request is being sent to the server. This header is implicitly sent by every HTTP client.\n\nYou can remove the header or enter a new one with a different value. It is most likely that without this header, your request will return an HTTP 400 error.",
+						"allowedToToggle": true,
+						"disableEdit": true,
+						"key": "Host",
+						"value": "<calculated when request is sent>",
+						"system": true,
+						"type": "text"
+					},
+					{
+						"name": "user-agent",
+						"sortOrder": 7,
+						"infoTitle": "We recommend using this header",
+						"info": "The User-Agent header is added to help the server identify Postman as the HTTP requesting application or client.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+						"allowedToToggle": true,
+						"disableEdit": true,
+						"key": "User-Agent",
+						"value": "PostmanRuntime/7.32.1",
+						"system": true,
+						"type": "text"
+					},
+					{
+						"name": "accept",
+						"sortOrder": 8,
+						"infoTitle": "We recommend using this header",
+						"info": "The \"Accept: */*\" header is added to tell the server that Postman can understand and process all forms of response content types.\n\nIt is recommended that this header be sent, but you can remove the header or enter a new one with a different value.",
+						"allowedToToggle": true,
+						"disableEdit": true,
+						"key": "Accept",
+						"value": "*/*",
+						"system": true,
+						"type": "text"
+					},
+					{
+						"name": "accept-encoding",
+						"sortOrder": 9,
+						"infoTitle": "We recommend using this header",
+						"info": "The Accept-Encoding header is added to indicate to the server that Postman HTTP client supports a defined list of content-encoding or compression algorithms as response.\n\nYou can remove the header or enter a new one with a different value. Doing that may not accurately render the response within the app.",
+						"allowedToToggle": true,
+						"disableEdit": true,
+						"key": "Accept-Encoding",
+						"value": "gzip, deflate, br",
+						"system": true,
+						"type": "text"
+					},
+					{
+						"name": "connection",
+						"sortOrder": 10,
+						"infoTitle": "We recommend using this header",
+						"info": "Postman added the Connection header to indicate the server to keep the underlying network connection open once the current response is received. This allows Postman to reuse the same connection for faster response times in subsequent requests to the same server.\n\nYou can remove this header or enter a new one with a different value, such as `Connection: Close` to control this behaviour.",
+						"allowedToToggle": true,
+						"disableEdit": true,
+						"key": "Connection",
+						"value": "keep-alive",
+						"system": true,
+						"type": "text"
+					},
+					{
+						"key": "x-functions-key",
+						"value": "HyS_l-ItJAQdvt18OQnU8Kygf5sJQvJg4Z_3m93dmZAVAzFueizdIw==",
+						"type": "text",
+						"id": 0
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NumeroPedido\": 2,\r\n    \"NomeCliente\": \"Jonas Lira\",\r\n    \"Cpf\": \"33333333333\",\r\n    \"Itens\": [\r\n        {\r\n            \"IdItem\": 1,\r\n            \"Descricao\": \"Panela\",\r\n            \"Quantidade\": 10\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pedidodurablefunction.azurewebsites.net/api/PedidoDurableFunctionsOrchestration_HttpStart",
+					"protocol": "https",
+					"host": [
+						"pedidodurablefunction",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"PedidoDurableFunctionsOrchestration_HttpStart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StatusUri Azure",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pedidodurablefunction.azurewebsites.net/runtime/webhooks/durabletask/instances/b82f21756aa8443a886a2a685ff08b01?taskHub=PedidoDurableFunction&connection=Storage&code=rof4yJn6yX7ADD-vbrV9o4KIg3akGHKiRhQpUgE_39oWAzFu0Dgo4A==&returnInternalServerErrorOnFailure=true",
+					"protocol": "https",
+					"host": [
+						"pedidodurablefunction",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"runtime",
+						"webhooks",
+						"durabletask",
+						"instances",
+						"b82f21756aa8443a886a2a685ff08b01"
+					],
+					"query": [
+						{
+							"key": "taskHub",
+							"value": "PedidoDurableFunction"
+						},
+						{
+							"key": "connection",
+							"value": "Storage"
+						},
+						{
+							"key": "code",
+							"value": "rof4yJn6yX7ADD-vbrV9o4KIg3akGHKiRhQpUgE_39oWAzFu0Dgo4A=="
+						},
+						{
+							"key": "returnInternalServerErrorOnFailure",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StatusUri Localhost",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7071/runtime/webhooks/durabletask/instances/29e574ce41eb410ca7cdbe3171570584?taskHub=TestHubName&connection=Storage&code=ROI1rpEgUcd1Jj0ZbZKFmcn2JxMsFGIsE7It-4jAd7AqAzFuTqJu8g==&returnInternalServerErrorOnFailure=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"runtime",
+						"webhooks",
+						"durabletask",
+						"instances",
+						"29e574ce41eb410ca7cdbe3171570584"
+					],
+					"query": [
+						{
+							"key": "taskHub",
+							"value": "TestHubName"
+						},
+						{
+							"key": "connection",
+							"value": "Storage"
+						},
+						{
+							"key": "code",
+							"value": "ROI1rpEgUcd1Jj0ZbZKFmcn2JxMsFGIsE7It-4jAd7AqAzFuTqJu8g=="
+						},
+						{
+							"key": "returnInternalServerErrorOnFailure",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
