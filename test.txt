@@ -1,0 +1,14 @@
+curl --location 'http://localhost:7071/api/PedidoDurableFunctionsOrchestration_HttpStart' \
+--header 'Content-Type: application/json' \
+--data '{
+    "NumeroPedido": 2,
+    "NomeCliente": "Jonas Lira",
+    "Cpf": "33333333333",
+    "Itens": [
+        {
+            "IdItem": 1,
+            "Descricao": "Panela",
+            "Quantidade": 10
+        }
+    ]
+}'
