@@ -27,8 +27,6 @@ namespace Company.Function
                 outputs.Add(await context.CallActivityAsync<string>(nameof(Baixar), pedido));
                 outputs.Add(await context.CallActivityAsync<string>(nameof(Entregar), pedido));
 
-                //return await context.CallActivityAsync<List<string>>(nameof(Visualizar), outputs);
-
             }
             catch (Exception ex)
             {
@@ -46,7 +44,7 @@ namespace Company.Function
             if (pedido.Cpf.Length != 11)
                 return $"Cpf do cliente {pedido.NomeCliente} inválido";
 
-            return $"Método Receber: Pedido {pedido.NomeCliente} Recebido!";
+            return $"Receber: Pedido {pedido.NumeroPedido} Recebido!";
         }
 
         [FunctionName(nameof(Baixar))]
@@ -59,14 +57,14 @@ namespace Company.Function
             if (pedido.Itens.Exists(x => x.Quantidade == 0))
                 return $"Método Baixar: Pedido {pedido.NumeroPedido} tem itens com a quantidade inválida!";
 
-            return $"Método Baixar: Pedido {pedido.NumeroPedido} baixado!";
+            return $"Baixar: Pedido {pedido.NumeroPedido} encaminhado para entrega!";
         }
 
         [FunctionName(nameof(Entregar))]
         public static string Entregar([ActivityTrigger] Pedido pedido, ILogger log)
         {
             log.LogInformation($"Pedido {pedido.Cpf}");
-            return $"Método Entregar: Pedido {pedido.NumeroPedido} Entregue!";
+            return $"Entregar: Pedido {pedido.NumeroPedido} Entregue!";
         }
 
         [FunctionName("PedidoDurableFunctionsOrchestration_HttpStart")]
@@ -78,7 +76,7 @@ namespace Company.Function
             var payload = req.Content.ReadAsStringAsync().Result.ToString();
             string instanceId = await starter.StartNewAsync("PedidoDurableFunctionsOrchestration", JsonConvert.DeserializeObject<Pedido>(payload));
 
-            log.LogInformation($"Started orchestration with ID = '{instanceId}'.", instanceId);
+            log.LogInformation($"Orquestração iniciada com o ID = '{instanceId}'.", instanceId);
 
             return starter.CreateCheckStatusResponse(req, instanceId, true);
         }
